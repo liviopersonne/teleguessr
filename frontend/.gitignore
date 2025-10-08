@@ -1,5 +1,9 @@
 node_modules
 
+# Direnv
+.direnv
+.envrc
+
 # Output
 .output
 .vercel
