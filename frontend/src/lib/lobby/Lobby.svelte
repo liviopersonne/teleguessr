@@ -41,7 +41,6 @@
 			<UserRound />
 			<div class="flex-1 space-y-1">
 				<p class="text-sm font-medium leading-none">Participants ({players.length})</p>
-				<p class="text-sm text-muted-foreground">RPZ la team</p>
 			</div>
 		</div>
 		<div>
