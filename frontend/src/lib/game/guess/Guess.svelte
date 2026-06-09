@@ -223,7 +223,7 @@
 	loader.importLibrary('maps').then(async ({ Map }) => {
 		gmaps = new Map(document.getElementById('google-maps') as HTMLElement, {
 			draggableCursor: 'crosshair',
-			mapId: 'd75ec101aa1be1aa',
+			mapId: '362b47619054f064141dec0a',
 			center: defaultCenter,
 			zoom: defaultZoom,
 			disableDefaultUI: true,
@@ -461,6 +461,20 @@
 			origin={$map!.places[round]}
 			class="z-10 h-14 w-14 bg-flag bg-[length:90%] bg-center bg-no-repeat"
 		></ResetViewButton>
+		{#if $user?.isAdmin}
+		<Button
+		class="z-10 h-14 w-14 bg-[length:100%] bg-center bg-no-repeat"
+			onclick={async () => {
+				await prepareUsersForRound();
+				const response = await fetch('/time');
+				const string_time = await response.json();
+				const time = new Date(string_time);
+				await pb.collection('game').update($game ? $game?.id : '', {
+					round: $game?.round + 1,
+					roundStart: time.toJSON()
+				});
+			}}>Next</Button>
+		{/if}
 	</div>
 	<div
 		id="google-maps"
