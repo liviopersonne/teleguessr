@@ -82,8 +82,29 @@
 			}
 		}
 	});
+
+	function downloadCSV() {
+	    const headers = ['Username', 'Score total', ...Array.from({ length: round }, (_, i) => `Round ${i + 1}`)];
+	    const rows = data.map(user => [
+	        user.username,
+	        user.total,
+	        ...Array.from({ length: round }, (_, i) => user.score?.[i] ?? '')
+	    ]);
+
+	    const csv = [headers, ...rows].map(row => row.join(',')).join('\n');
+	    const blob = new Blob([csv], { type: 'text/csv' });
+	    const url = URL.createObjectURL(blob);
+	    const a = document.createElement('a');
+	    a.href = url;
+	    a.download = 'scoreboard.csv';
+	    a.click();
+	    URL.revokeObjectURL(url);
+	}
 </script>
 
+<Button variant="outline" onclick={downloadCSV}>
+    Telecharger les resultats
+</Button>
 <Button
 	variant="outline"
 	onclick={() => {
