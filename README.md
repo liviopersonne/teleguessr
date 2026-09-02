@@ -129,6 +129,8 @@ Pour intéragir avec l'api Google Maps, il faut créer un projet sur la [Cloud C
 
 Normalement, vous avez 10000 requêtes gratuites par mois il me semble, mais en pratique on en utilise beaucoup moins (j'en ai utilisé 150 en tout) donc c'est gratuit !
 
+Lorsque le téléguessr est fini, n'oubliez pas de retourner sur la cloud console et d'aller dans [Gestion des comptes de facturation](https://console.cloud.google.com/billing) et de dissocier le compte de facturation de l'api google maps, et je recommande même de supprimer le compte de facturation avec le bouton en haut à droite (attention j'ai dû élargir ma fenêtre et rabattre la rubrique de gauche pour voir le bouton). Tout ça c'est pour éviter que votre numéro de carte bleue traîne dans un truc que vous oubliez, normalement elle ne sera jamais facturée, mais si votre clé d'API google maps fuite, n'importe-qui pourra l'utiliser et c'est vous qui serez facturé à la fin. Donc **évitez à tout prix que la clé d'API fuite** et si elle fuite: **changez-la** !
+
 ## La VM
 
 Pour host le site le jour de l'event, il faut utiliser une VM de Rezel, pour ce faire il faut demander une VM sur [hosting](https://hosting.rezel.net).
